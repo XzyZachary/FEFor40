@@ -35,7 +35,7 @@ Foo.a = function () {
 };
 Foo.a(); // 
 let obj = new Foo(); //
-obj.a(); //
+obj.a(); // 
 Foo.a(); //
 
 // 3
@@ -60,7 +60,7 @@ function getValue() {
 
 //请写出以下输出结果：
 getValue(); // 
-fn().getValue(); // 1
+fn().getValue(); // 
 getValue(); // 
 new fn.getValue(); //  
 new fn().getValue(); //  ！！！！
