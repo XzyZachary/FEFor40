@@ -132,7 +132,11 @@ newArr = arr.filter(function (x) {
 console.log(newArr.length);
 
 // 17 下面代码中 a 在什么情况下会打印 1
-var a = ?;
+var a = {
+    toString: () => {
+        
+    }
+};
 if(a == 1 && a== 2 && a== 3){
  	console.log(1);
 }
