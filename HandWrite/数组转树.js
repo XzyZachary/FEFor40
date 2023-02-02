@@ -43,17 +43,52 @@ const arr = [
   },
 ];
 
-function treeData(data, id, parentId, childName) {
-    let cloneData = JSON.parse(JSON.stringify(data))
+// function treeData(data, id, parentId, childName) {
+//     let cloneData = JSON.parse(JSON.stringify(data))
 
-    return cloneData.filter(father =>  {
-        let newArr = cloneData.filter(child => {
-            return father[id] == child[parentId]
-        })
+//     return cloneData.filter(father =>  {
+//         let newArr = cloneData.filter(child => {
+//             return father[id] == child[parentId]
+//         })
 
-        father[childName] =  newArr
-        return father[parentId] == 0
-    })
+//         father[childName] =  newArr
+//         return father[parentId] == 0
+//     })
+// }
+// let msg = treeData(arr, 'id', 'parentId', 'children')
+// console.log(33, msg)
+
+function get_tree(arr) {
+  const list = [];
+  const hashmap = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    // 存储每个id下的子元素
+    let pid = arr[i].pid
+    let id = arr[i].id
+
+
+    if (!hashmap[id]) {
+      hashmap[id] = { children: [] }
+    }
+
+    hashmap[id] = { ...arr[i], children: hashmap[id].children }
+
+    if (pid === 0) {
+      list.push(hashmap[id]);
+    } else {
+      if (!hashmap[pid]) {
+        hashmap[pid] = {
+          children: []
+        }
+      }
+
+      hashmap[pid].children.push(hashmap[id])
+    }
+  }
+  return list;
 }
-let msg = treeData(arr, 'id', 'parentId', 'children')
+
+
+let msg = get_tree(arr, 'id', 'parentId', 'children')
 console.log(33, msg)
