@@ -58,3 +58,39 @@ var inorderTraversal = function(root) {
 
     return res;
 }
+
+
+var inorderTraversal = function(root) {
+    let res = [];
+    let stack = [];
+    let cur = root;
+
+    while(stack.length || cur) {
+        if (cur) {
+            stack.push(cur)
+            cur = cur.left
+        } else {
+            cur = stack.pop()
+            res.push(cur.val)
+
+            cur = cur.right
+        }
+    }
+
+    return res;
+}
+
+var behendTraversal = function(root) {
+    if(!root) return [];
+    let res = [];
+
+    const stack = [root];
+    while(stack.length) {
+        const _res = stack.pop();
+        res.push(_res.val)
+        if (_res.right) stack.push(_res.right)
+        if (_res.left) stack.push(_res.left)
+    }
+
+    return res.reverse();
+}

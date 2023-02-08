@@ -15,7 +15,7 @@ var isSymmetric = function (root) {
 
         let outside = compareNode(left.left, right.right)
 
-        let insize = compareNode(left.right,right.left)
+        let inside = compareNode(left.right,right.left)
 
         return outside && inside
     }
