@@ -86,21 +86,21 @@ console.log(typeof (f = foo.bar)());
 
 
 // 11
-关于AMD、CMD规范区别说法正确的是？（多选）
-A.AMD规范：是 RequireJS在推广过程中对模块定义的规范化产出的
-B.CMD规范：是SeaJS 在推广过程中对模块定义的规范化产出的
-C.CMD 推崇依赖前置;AMD 推崇依赖就近
-D.CMD 是提前执行;AMD 是延迟执行
-E.AMD性能好, 因为只有用户需要的时候才执行; CMD用户体验好, 因为没有延迟, 依赖模块提前执行了
+// 关于AMD、CMD规范区别说法正确的是？（多选）
+// A.AMD规范：是 RequireJS在推广过程中对模块定义的规范化产出的
+// B.CMD规范：是SeaJS 在推广过程中对模块定义的规范化产出的
+// C.CMD 推崇依赖前置;AMD 推崇依赖就近
+// D.CMD 是提前执行;AMD 是延迟执行
+// E.AMD性能好, 因为只有用户需要的时候才执行; CMD用户体验好, 因为没有延迟, 依赖模块提前执行了
 
 
-// 12
-下面对Vue.js中keep-alive的理解正确的是？（多选）
+// // 12
+// 下面对Vue.js中keep-alive的理解正确的是？（多选）
 
-A.一般结合路由和动态组件一起使用，用于缓存组件；
-B.提供 include 和 exclude 属性，两者都支持字符串或正则表达式， include 表示只有名称匹配的组件会被缓存，exclude 表示任何名称匹配的组件都不会被缓存 ，其中 include 的优先级比 exclude 高；
-C.对应两个钩子函数 activated 和 deactivated ，当组件被激活时，触发钩子函数 activated，当组件被移除时，触发钩子函数 deactivated。
-D.keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，但是不能避免重新渲染
+// A.一般结合路由和动态组件一起使用，用于缓存组件；
+// B.提供 include 和 exclude 属性，两者都支持字符串或正则表达式， include 表示只有名称匹配的组件会被缓存，exclude 表示任何名称匹配的组件都不会被缓存 ，其中 include 的优先级比 exclude 高；
+// C.对应两个钩子函数 activated 和 deactivated ，当组件被激活时，触发钩子函数 activated，当组件被移除时，触发钩子函数 deactivated。
+// D.keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，但是不能避免重新渲染
 
 
 // 13
