@@ -98,3 +98,25 @@ Typescript 官网也拿 ReturnType 这一经典例子说明它的作用：
 > 逆变与协变：  
 > 协变(co-variant)：类型收敛  
 > 逆变(contra-variant)：类型发散
+
+
+```typescript
+    type getIntersection<T> = T extends (a: infer P,b: infer P) => void ? P : never;
+    type Intersection = getIntersection<(a: string, b: number)=> void> // string & number
+```
+
+1. infer必须在extends右侧使用，因为必须保证这个已知类型是由右侧泛型推导出来的，不然推导的参数还有什么意义呢？检查时会跳过使用了infer的地方
+2. 遵循以下规则推导P，有四种情况：
+    * P只在一个位置占位，直接推出类型
+    * P都在协变位置占位：推出占位类型的联合
+    * P都在逆变位置占位：推出占位类型的交叉（目前只有参数是逆变）
+    * P在顺变位置又在逆变位置： 只有占位类型相同才能使extends为true，且推出这个占位类型
+
+我们的例子属于第三种情况，P都在逆变位置占比，最终推出两个类型的交叉```string & number```
+
+
+为何是这种关系呢，可以朴素的解释一下：
+
+首先回顾下类型运算关系和函数子类型： A|B -> A or B -> A & B，函数子类型的参数是逆变的
+
+因为 ```(a: string, b: number) => void extends (a: infer P, b: infer P) => void``` 所以 ```(a: string, b: number) => void``` 是  ```(a: infer P,b: infer P) => void```子类型，所以P到string 或者number是逆变，然而我们这里是反过来推P，所以string或number到P是协变，最终就推出 ```string & number```
