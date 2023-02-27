@@ -7,6 +7,6 @@ const fn = (v: boolean) => {
       return 2
   }
   
-  type a = MyReturnType<typeof fn> // 应推导出 "1 | 2"
+  type a3 = MyReturnType<typeof fn> // 应推导出 "1 | 2"
 
   type MyReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
