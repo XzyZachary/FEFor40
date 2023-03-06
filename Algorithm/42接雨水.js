@@ -8,5 +8,46 @@
 // 输出：9
 
 var trap = function(height) {
+    let stack = [0], res = 0;
+    const n = height.length
+    if(n <= 2) return 0; // 可以不加
 
+    for (let i = 1; i < n; i++) {
+        while (stack.length && height[i] > height[stack[stack.length - 1]]) {
+            let mid = stack[stack.length - 1]
+            stack.pop();
+            if (stack.length) {
+                let h = Math.min(height[stack[stack.length - 1]], height[i]) - height[mid];
+                let w = i - stack[stack.length - 1] - 1;
+                res += h * w;
+            }
+        }
+
+        stack.push(i);
+    }
+
+    return res;
 };
+
+var trap = function(height) {
+    let ans = 0;
+    let left = 0, right = height.length - 1;
+    let leftMax = 0, rightMax = 0;
+ 
+    while(left < right){
+        leftMax = Math.max(leftMax, height[left]);
+        rightMax = Math.max(rightMax, height[right]);
+        if (height[left] < height[right]){
+            console.log(3, leftMax, height[left], leftMax - height[left])
+            ans += leftMax - height[left];
+            ++left;
+        } else {
+            // console.log(4, rightMax, height[right], rightMax - height[right])
+            ans += rightMax - height[right];
+            --right;
+        }
+    }
+    return ans;
+ };
+
+console.log(trap( [0,1,0,2,1,0,1,3,2,1,2,1]))
