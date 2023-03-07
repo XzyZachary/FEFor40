@@ -33,13 +33,30 @@ var lengthOfLongestSubstring = function(s) {
 var lengthOfLongestSubstring = function(s) {
     let map = new Map(), max = 0;
     for (let i = 0, j = 0; j < s.length; j++) {
-        console.log(333, i, map)
         if (map.has(s[j])) {
             i = Math.max(map.get(s[j]) + 1, i)
         }
+        console.log(j,i, map)
         max = Math.max(max, j - i + 1)
         map.set(s[j], j)
     }
     return max;
 }
-lengthOfLongestSubstring('pwwkew')
+
+
+// var lengthOfLongestSubstring = (s) => {
+//     let res = [];
+//     let max = 0;
+//     for (let str of s) {
+//         console.log(res, str)
+//         while(res.includes(str)) {
+//             res.shift()
+//         }
+//         res.push(str)
+
+//         max = Math.max(max, res.length)
+//     }
+//     console.log(max)
+//     return max
+// }
+lengthOfLongestSubstring('abcabcbb')
